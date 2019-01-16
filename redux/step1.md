@@ -21,7 +21,7 @@ const reducer = function (state = initState, action) {
   }
 }
 
-// 创建store
+// 创建store
 const store = createStore(reducer);
 
 // 创建监听器
