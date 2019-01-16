@@ -36,7 +36,7 @@ store.dispatch({ type: 'INCREMENT', stage: 1 }); // log:  { num: 1 }
 store.dispatch({ type: 'DECREMENT', stage: 1 }); // log: { num: 0 }
 ```
 
-## createStore
+## createStore
 初步看，createStore函数有三个返回值，分别是：
 * dispatch函数：触发state更新。
 * subscribe函数：加入新的监听器。
@@ -44,9 +44,9 @@ store.dispatch({ type: 'DECREMENT', stage: 1 }); // log: { num: 0 }
 
 接受一个参数：
 * reducer函数。
-那么createStore骨架大概是：
+那么createStore骨架大概是：
 ```javascript
-function createStore(reducer) {
+function createStore(reducer) {
   function subscribe() {
   }
 
@@ -66,7 +66,7 @@ function createStore(reducer) {
 
 ## subscribe添加监听器
 ```javascript
-function createStore(reducer) {
+function createStore(reducer) {
   const currentListeners = [];
   
   function subscribe(listener) {
@@ -89,7 +89,7 @@ function createStore(reducer) {
 
 ## getState获取当前的state
 ```javascript
-function createStore(reducer) {
+function createStore(reducer) {
   const currentListeners = [];
   let currentState;
 
@@ -112,9 +112,9 @@ function createStore(reducer) {
 }
 ```
 
-## dispatch触发state更新。
+## dispatch触发state更新
 ```javascript
-function createStore(reducer) {
+function createStore(reducer) {
   const currentListeners = [];
   let currentState;
 
@@ -127,9 +127,9 @@ function createStore(reducer) {
   }
 
   function dispatch(action) {
-    // 更新state
+    // 更新state
     currentState = reducer(action);
-    // 通知监听队列
+    // 通知监听队列
     const len = currentListeners.length;
     for (let i = 0; i < len; i += 1) {
       currentListeners[i]();
