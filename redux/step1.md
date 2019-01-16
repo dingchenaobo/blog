@@ -27,7 +27,7 @@ const store = createStore(reducer);
 // 创建监听器
 store.subscribe(() => {
   // 获取state
-  store.getState();
+  console.log(store.getState());
 });
 
 // 触发state更新
