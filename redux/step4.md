@@ -6,10 +6,10 @@
 
 > fn1(fn2(fn3(fn4(fn5(1)))));
 
-redux的compose函数基于Array.prototype.reduce实现。
+redux的compose函数基于Array.prototype.reduce实现。
 
-## reduce
-参数如下（ts真是好东西）：
+## reduce
+参数如下（ts真是好东西）：
 ```typescript
 Array.prototype.reduce(
   callbackfn: (
