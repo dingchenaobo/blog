@@ -37,17 +37,17 @@ function isPlainObject(obj) {
 }
 ```
 
-## 跨域访问变量（cross-realm）
+## 跨域访问变量（cross-realm）
 如果出现页面嵌套，即iframe的时候，在frame页面中打印：
 ```javascript
 // frame
 console.log(window.parent.Array === Array) // false
 ```
-这两个Array已经不是一个构造函数了。同理，如果在父页面中使用isPlainObject，在子页面中调用，直接使用
+这两个Array已经不是一个构造函数了。同理，如果在父页面中使用isPlainObject，在子页面中调用，直接使用
 ```javascript
 Object.getPrototypeOf(obj) === Object.prototype
 ```
-的判读，其实就是父页面的Object.prototype和子页面的Object.prototype比较，结果就成了false了：
+的判读，其实就是父页面的Object.prototype和子页面的Object.prototype比较，结果就成了false了：
 ```javascript
 // parent
 function isPlainObject(obj) {
