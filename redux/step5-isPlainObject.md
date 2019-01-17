@@ -12,7 +12,7 @@ function dispatch(action) {
 ```
 这个isPlainObject是个什么东西呢？
 
-## 疑惑
+## 疑惑
 看看源码：
 ```javascript
 function isPlainObject(obj) {
