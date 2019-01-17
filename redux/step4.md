@@ -1,5 +1,5 @@
 ## compose
-compose的功能：
+compose的功能：
 > compose(fn1, fn2, fn3, fn4, fn5)(1);
 
 翻译为：
