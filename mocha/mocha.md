@@ -12,7 +12,7 @@ npm i --save-dev mocha expect.js mochawesome
 * expect.js：断言库，[github地址](https://github.com/Automattic/expect.js).
 * mochawesome：html可视化测试报告，[github地址](https://github.com/adamgruber/mochawesome).
 
-## 简单的测试
+## 简单的测试
 ```javascript
 // func.js
 module.exports = function test(a, b) {
@@ -38,6 +38,6 @@ module.exports = function () {
 // package.json: script
 "test": "mocha --reporter mochawesome"
 ```
-运行脚本会生成```mochawesome-report```文件夹，打开```mochawesome.html```，可以看到可视化测试结果：
+运行脚本会生成```mochawesome-report```文件夹，打开```mochawesome.html```，可以看到可视化测试结果：
 
 ![result](https://gw.alicdn.com/tfs/TB13mh_DmzqK1RjSZPxXXc4tVXa-2878-1452.jpg)
