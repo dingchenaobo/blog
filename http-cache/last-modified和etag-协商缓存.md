@@ -5,6 +5,9 @@ const maxAge = 300; // s
 const lastModified = status.mtime; // 文件的最后修改日期
 const ifModifiedSince = ctx.request.header['if-modified-since'] || 0;
 
+/**
+  * If-Modified-Since能检查到的粒度是s级，所以无法根据 lastModified 的时间戳判断
+ */
 const isModify = new Date(lastModified).toUTCString() === new Date(ifModifiedSince).toUTCString(); // 对比上次修改日期和最后修改日期是不是同一天
 
 ctx.res.writeHead(isModify ? 304 : 200, {
