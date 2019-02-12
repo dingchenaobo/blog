@@ -10,7 +10,7 @@ brew install nginx
 
 ## nginx.conf
 
-## 常用命令
+## 常用命令
 启动
 ```bash
 nginx
@@ -21,7 +21,7 @@ nginx
 ps -ef|grep nginx
 ```
 
-输出结果
+输出结果
 ```bash
 501 69087     1   0  2:12下午 ??         0:00.00 nginx: master process nginx
 501 69088 69087   0  2:12下午 ??         0:00.01 nginx: worker process
@@ -35,7 +35,7 @@ kill -QUIT 主进程号
 # 快速停止
 kill -TERM 主进程号
 ```
-重启
+重启
 ```bash
 nginx -s reload
 ```
