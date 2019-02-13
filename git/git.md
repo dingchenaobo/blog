@@ -1,7 +1,7 @@
 ## git
 最常用的基本git操作就是：
 
-```git add .``` -> ```git commit -m "xxx"``` -> ```git push```。
+```bash add .``` -> ```bash commit -m "xxx"``` -> ```bash push```。
 
 基本概念也清楚，```add``` 工作区存入暂存区，```commit``` 暂存区存入本地仓库，```push``` 本地仓库推向远程仓库，那就是有这么几个区域：
 * Workspace：工作区。
@@ -13,7 +13,7 @@
 
 ## 初始化本地仓库（拉取远程仓库到本地）
 一般都是先在平台上（gitlab、github、gitea等）创建远程仓库，然后本地拉取：
-```git
+```bash
 git clone <url>
 ```
 拉取一般分两种：```https``` 和 ```ssh```。
@@ -22,16 +22,16 @@ git clone <url>
 拉取完成即本地仓库初始化完成，会多一个 ```.git``` 文件夹，看不到设置隐藏文件可见。
 
 ## 初始化本地仓库（初始化本地仓库连接远程）
-```git
+```bash
 git init
 ```
 ```init``` 后就初始化了一个本地仓库，生成了一个 ```.git``` 文件夹，添加个占位文件 ```.gitkeep```，然后提交到本地仓库：
-```git
+```bash
 git add .
 git commit -m "feat: .gitkeep"
 ```
 连接远程仓库：
-```git
+```bash
 git remote add origin <url>
 ```
 将本地master分支同步到远程master分支
@@ -49,12 +49,12 @@ git push -u origin master
 * git add < dir >：添加指定目录所有的文件都进入暂存区。
 * git add < filename >：添加指定文件进入暂存区。
 
-最常用的就是 ```git add .``` ，基本上都是用这个。
+最常用的就是 ```bash add .``` ，基本上都是用这个。
 
-> 从暂存区回退到工作区: ```git reset```，和 add 的命令是相对的，.、< dir >、< filename >，意思也是相对的，将 全部 \ 某一目录下的所有文件 \ 某一文件 从暂存区回退到工作区。
+> 从暂存区回退到工作区: ```bash reset```，和 add 的命令是相对的，.、< dir >、< filename >，意思也是相对的，将 全部 \ 某一目录下的所有文件 \ 某一文件 从暂存区回退到工作区。
 
 ## 查看暂存区和工作区状态
-```git
+```bash
 git status
 ```
 ![截图](https://img.alicdn.com/tfs/TB1yTXXGwDqK1RjSZSyXXaxEVXa-1622-1086.jpg)
@@ -66,10 +66,10 @@ git status
 > ```staged``` 和 ```index``` 其实都是暂存区 ，[文档中有提到过](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)：The staging area is a file, generally contained in your Git directory, that stores information about what will go into your next commit. Its technical name in Git parlance is the “index”, but the phrase “staging area” works just as well.
 
 ## 暂存区提交到本地仓库
-```git
+```bash
 git commit -m <message>
 ```
-```message``` 中一般填写本次提交的原因/目的。如果单行不够写，可以直接 ```git commit``` 进入文本编辑。虽然理论上说，commit可以随便写，但是一般遵守的是 angular 的 commit 规范
+```message``` 中一般填写本次提交的原因/目的。如果单行不够写，可以直接 ```bash commit``` 进入文本编辑。虽然理论上说，commit可以随便写，但是一般遵守的是 angular 的 commit 规范
 > [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.em2hiij8p46d)
 
 根据规范，一次 commit 应该是这样的：
@@ -97,24 +97,40 @@ git commit -m <message>
 * 关闭 issue：Closes #id
 
 例子：
-```git
+```bash
 # commit 的内容
 feat: create some file
 
 Some describe for this commit
 ```
 
-## 特殊的commit(Revert)
-如果当前 commit 用于撤销以前的 commit，则必须以revert:开头，后面跟着被撤销 Commit 的 Header。
-Body部分的格式是固定的，必须写成This reverts commit < hash >.，其中的hash是被撤销 commit 的 SHA 标识符。
-```git
-# commit 的内容
-revert: feat: create some file
-
-This reverts commit 59af998b82fcea05758bc73c492cd120360bbe0d.
+## 版本回退（reset）
+按步骤回退：
+```bash
+# 回退到上次提交
+git reset head~1
+# 回退上上次提交
+git reset head~2
+.
+.
+.
 ```
+回退到某个版本：
+```bash
+# 回退到上次提交
+git reset --hard 3aa3e5ae7fa592de05e2662ef1316d3985e281d6
+```
+```--hard``` 参数为reset的一种模式，表示从当前到指定的 commit 所有数据全部丢弃，直接回到指定的 commit 版本。
+还有 ```--mixed``` 和 ```--sort```。
+
+## 本地仓库提交到远程仓库
+* git push
+* git push --set-upstream origin < brnachname > / git push -u origin < brnachname > 提交新分支
+* git push --force 强制提交
 
 ## 参考
 * [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
 
-* [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.4a9jrkze4u4a)
+* [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.4a9jrkze4u4a)，里面有一些符合规范的 commit 的例子。
+
+* [git reset回滚代码](https://juejin.im/post/5b87e75d6fb9a019d74769a6)
