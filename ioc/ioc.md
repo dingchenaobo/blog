@@ -1,9 +1,9 @@
 ## ioc
-[官方解释](https://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC)
+[维基描述](https://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC)
 > 控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（Dependency Injection，简称DI），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。也可以说，依赖被注入到对象中。
 
 ## 问题
-比如，球员可以抽象成一个类，球员有一个属性team，队伍也可以抽象成一个类：
+比如，球员可以抽象成一个类，球员有一个属性team，队伍也可以抽象成一个类：
 ```typescript
 // type.ts
 export interface ITeam {
