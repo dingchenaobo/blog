@@ -85,9 +85,12 @@ git commit -m <message>
 * fix：修复bug(bug fix)
 * docs：文档(documentation)
 * style：样式，不是指css样式，而是代码风格(formatting, missing semi colons, …)
-* refactor：重构
+* refactor：重构（既不是新功能，也不是修复 bug）
 * test：添加测试(when adding missing tests)
-* chore：小改动，这个其实会出现歧义，阮大翻译的是 ```构建过程或辅助工具的变动``` (maintain)
+* ~~chore：小改动，这个其实会出现歧义，阮大翻译的是 ```构建过程或辅助工具的变动``` (maintain)~~
+* build: 影响系统构建和外部依赖（webpack、npm、gulp 等）
+* perf: 性能提升
+* ci: 持续集成相关（持续集成脚本等）
 2. ```scope```：用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同，```非必填```。
 3. ```subject```：简短地描述，可以理解为 title，以动词开头，```必填```。
 4. ```BLANK LINE```：空一行。
@@ -131,6 +134,7 @@ git reset --hard 3aa3e5ae7fa592de05e2662ef1316d3985e281d6
 ## 参考
 * [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
 
-* [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.4a9jrkze4u4a)，里面有一些符合规范的 commit 的例子。
+* ~~[AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.4a9jrkze4u4a)，里面有一些符合规范的 commit 的例子。~~
+新版本 angular 做了一点的修改：[Contributing to Angular](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#contributing-to-angular)
 
 * [git reset回滚代码](https://juejin.im/post/5b87e75d6fb9a019d74769a6)
